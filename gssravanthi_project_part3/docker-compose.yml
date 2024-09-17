@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  book_catalog:
+    image: sit722projectpart3.azurecr.io/book_catalog:latest
+    build: 
+      context: ./book_catalog
+      dockerfile: Dockerfile
+    ports:
+      - "3000:8000"
+    environment:
+      - PORT=8000
+      - DATABASE_URL=postgresql://gssravanthi_sit722_part3_iywz_user:42gJSH8i8PfXnTCMeofsdKvA4pMNUc9X@dpg-crkf5pogph6c73c97m2g-a.oregon-postgres.render.com/gssravanthi_sit722_part3_iywz
+    restart: always
+  inventory_management:
+    image: sit722projectpart3.azurecr.io/inventory_management:latest
+    build: 
+      context: ./inventory_management
+      dockerfile: Dockerfile
+    ports:
+      - "3001:8001"
+    environment:
+      - PORT=8001
+      - DATABASE_URL=postgresql://gssravanthi_sit722_part3_iywz_user:42gJSH8i8PfXnTCMeofsdKvA4pMNUc9X@dpg-crkf5pogph6c73c97m2g-a.oregon-postgres.render.com/gssravanthi_sit722_part3_iywz
+    restart: always
